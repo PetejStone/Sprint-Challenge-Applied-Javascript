@@ -3,41 +3,38 @@ class Carousel {
   this.content = carousel;
   this.image = image;
   //console.log(this.image)
-  this.number = 1;
+  this.number = 1; //number counter that keeps track and will match dataset number
+
   const rightButton = document.querySelector('.right-button');
   const leftButton = document.querySelector('.left-button');
   rightButton.addEventListener('click', this.right.bind(this));
   leftButton.addEventListener('click', this.left.bind(this));
  }
  right(event) {
-   this.number ++;
+   this.number ++; //add one to number when right arrow is clicked
   // console.log(this.number)
-   const length = this.content.querySelectorAll('img').length;
+   const length = this.content.querySelectorAll('img').length; //length equal to number of images in carousel
 
    if(this.number > length) {
-     this.number = 1;
+     this.number = 1; // if number is greater than # of images in carousel, go back to one
    } else if (this.number < 1) {
-     this.number = length;
+     this.number = length; // if number is less than 1, set number to the length # of carousel images
    }
    console.log(this.number);
-   if(this.image.dataset.number ===  `${this.number}`) {;
+   if(this.image.dataset.number ===  `${this.number}`) {; //if the dataset number equals the counter number, display it
      const currentImage = this.image;
      currentImage.classList.toggle('show-img');
-      //currentImage.classList.toggle('show-img');
-    // currentImage.nextElementSibling.classList.toggle('show-img');
-    // currentImage.previousElementSibling.classList.toggle('show-img')
-     //currentImage.classList.remove('show-img');
-    //currentImage.nextElementSibling.classList.toggle('show-img')
+  
   } else {
-    this.image.classList.remove('show-img');
+    this.image.classList.remove('show-img'); //if not, hide all other images
   }
  }
  left(event) {
-   this.number --;
+   this.number --; //subtract one from counter when left arrow is clicked
   // console.log(this.number)
    const length = this.content.querySelectorAll('img').length;
 
-   if(this.number > length) {
+   if(this.number > length) { //same as above
      this.number = 1;
    } else if (this.number < 1) {
      this.number = length;
@@ -51,7 +48,7 @@ class Carousel {
   }
  }
 }
-
+//constructor function that creates coursel
 const carousel = document.querySelectorAll('.carousel');
 carousel.forEach(carousel => {
   const images = carousel.querySelectorAll('img');
