@@ -1,9 +1,53 @@
 class Carousel {
+  constructor(carousel, image){
+  this.content = carousel;
+  this.image = image;
+  //console.log(this.image)
+  this.number = 0;
+  const rightButton = document.querySelector('.right-button');
+  rightButton.addEventListener('click', this.right.bind(this));
 
+ }
+ right(event) {
+   this.number ++;
+  // console.log(this.number)
+   const length = this.content.querySelectorAll('img').length;
+
+   if(this.number > length) {
+     this.number = 1;
+   } else if (this.number < 1) {
+     this.number = length;
+   }
+   //console.log(this.number);
+   if(this.image.dataset.number ===  `${this.number}`) {;
+     const currentImage = this.image;
+     console.log(currentImage)
+      //currentImage.classList.toggle('show-img');
+    // currentImage.nextElementSibling.classList.toggle('show-img');
+    // currentImage.previousElementSibling.classList.toggle('show-img')
+     //currentImage.classList.remove('show-img');
+    //currentImage.nextElementSibling.classList.toggle('show-img')
+  }
+
+ }
 }
 
-let carousel = document.querySelector();
+const carousel = document.querySelectorAll('.carousel');
+carousel.forEach(carousel => {
+  const images = carousel.querySelectorAll('img');
+   images.forEach(image => {
+     new Carousel(carousel, image);
+   })
+})
 
+// const tabs = document.querySelectorAll('.tabs');
+// tabs.forEach(tab => {
+//   const links = tab.querySelectorAll('.tabs-link');
+//   //console.log('Navigator:', links.length)
+//   links.forEach(link => {
+//     new TabLink(tab, link);
+//   })
+// })
 /* If You've gotten this far, you're on your own! Although we will give you some hints:
     1. You will need to grab a reference to the carousel, and in it grab the laft and right buttons
     2. You will need to grab a reference to all of the images
