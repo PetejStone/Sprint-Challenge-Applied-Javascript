@@ -18,7 +18,7 @@ class Carousel {
    } else if (this.number < 1) {
      this.number = length;
    }
-   //console.log(this.number);
+   ///console.log(this.number);
    if(this.image.dataset.number ===  `${this.number}`) {;
      const currentImage = this.image;
      console.log(currentImage)
